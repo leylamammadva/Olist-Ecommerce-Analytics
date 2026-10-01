@@ -30,4 +30,4 @@ This project is an end-to-end data analytics solution using a real-world e-comme
 
 * **Business Scenario:** The Marketing team is currently running generic campaigns for all customers, resulting in low ROI and wasted budget. They need to understand customer behavior to send targeted, personalized offers rather than a "one-size-fits-all" approach.
 * **Objective:** Perform RFM (Recency, Frequency, Monetary) analysis using Python and Pandas to categorize the customer base into actionable segments (e.g., Champions, Loyal Customers, At Risk) based on their purchasing history.
-* **Solution:** `03_rfm_customer_segmentation.ipynb`
+* **Solution:** `04_rfm_customer_segmentation.ipynb`
