@@ -32,7 +32,7 @@ This project is an end-to-end data analytics solution using a real-world e-comme
 * **Objective:** Perform RFM (Recency, Frequency, Monetary) analysis using Python and Pandas to categorize the customer base into actionable segments (e.g., Champions, Loyal Customers, At Risk) based on their purchasing history.
 * **Solution:** `04_rfm_customer_segmentation.ipynb`
 
-** Task 5: Interactive RFM Dashboard (Power BI)**
+**Task 5: Interactive RFM Dashboard (Power BI)**
 
 * **Business Scenario:** Executive management needs a quick, visual way to understand customer segments and their financial impact without looking at raw data or Python code.
 * **Objective:** Connect the segmented data to Power BI and build a dashboard highlighting customer distribution (Donut Chart) and revenue generation by segment (Clustered Column Chart).
