@@ -1,3 +1,7 @@
+/*
+Task 1: Data Cleaning and Consolidated View
+Business Purpose: Merge order, customer, and payment datasets to create a clean, unified view of all successful (delivered) transactions with valid payment amounts.
+*/
 SELECT 
     o.order_id,
     c.customer_unique_id,
