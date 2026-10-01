@@ -37,3 +37,9 @@ This project is an end-to-end data analytics solution using a real-world e-comme
 * **Business Scenario:** Executive management needs a quick, visual way to understand customer segments and their financial impact without looking at raw data or Python code.
 * **Objective:** Connect the segmented data to Power BI and build a dashboard highlighting customer distribution (Donut Chart) and revenue generation by segment (Clustered Column Chart).
 * **Solution:** `05_RFM_Dashboard.pbix` (Interactive file) and `RFM_Dashboard_Preview.png` (Visual preview)
+
+**Task 6: Advanced Machine Learning & Retention Analysis (Python)**
+
+* **Business Scenario:** Moving beyond descriptive statistics and basic segmentation, the executive team requires predictive modeling to identify customer churn risks and behavioral patterns over time.
+* **Objective:** Apply K-Means clustering, perform Cohort Analysis (Retention Heatmap), and build a Churn Prediction model using Machine Learning.
+* **Solution:** `06_advanced_ml_and_churn.ipynb` (Advanced ML notebook featuring K-Means clustering, Cohort retention heatmap, and Logistic Regression churn prediction)
