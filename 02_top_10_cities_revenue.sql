@@ -1,3 +1,4 @@
+-- Top 10 cities by revenue from delivered orders (input for marketing budget allocation).
 SELECT 
     c.customer_city,
     SUM(p.payment_value) AS total_revenue
