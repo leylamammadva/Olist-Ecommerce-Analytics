@@ -1,4 +1,4 @@
-# E-Commerce End-to-End Analytics (Olist)
+# E-Commerce Customer Segmentation & Retention Analysis for Olist Marketplace
 
 ## Project Overview
 This project is an end-to-end data analytics solution using a real-world e-commerce dataset (Olist). The goal is to process raw data, perform customer segmentation, and build an interactive dashboard to drive business decisions.
