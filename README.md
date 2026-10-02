@@ -38,8 +38,13 @@ This project is an end-to-end data analytics solution using a real-world e-comme
 * **Objective:** Connect the segmented data to Power BI and build a dashboard highlighting customer distribution (Donut Chart) and revenue generation by segment (Clustered Column Chart).
 * **Solution:** `05_RFM_Dashboard.pbix` (Interactive file) and `RFM_Dashboard_Preview.png` (Visual preview)
 
-**Task 6: Advanced Machine Learning & Retention Analysis (Python)**
+Task 6: Advanced ML & Retention Analysis (Python)
+- K-Means clustering and cohort retention heatmap: 06_advanced_ml_and_churn.ipynb
+- Repurchase prediction with time-based split (no data leakage): 07_churn_prediction_time_based.ipynb
 
-* **Business Scenario:** Moving beyond descriptive statistics and basic segmentation, the executive team requires predictive modeling to identify customer churn risks and behavioral patterns over time.
-* **Objective:** Apply K-Means clustering, perform Cohort Analysis (Retention Heatmap), and build a Churn Prediction model using Machine Learning.
-* **Solution:** `06_advanced_ml_and_churn.ipynb` (Advanced ML notebook featuring K-Means clustering, Cohort retention heatmap, and Logistic Regression churn prediction)
+Key findings:
+- Only 0.7% of customers (386 of 55,524) placed another order within 90 days,
+  so repeat purchase on Olist is extremely rare.
+- Logistic Regression (ROC-AUC 0.61, PR-AUC 0.05, about 7x the random baseline of 0.007)
+  outperformed Random Forest at ranking likely repurchasers (PR-AUC 0.011).
+- RFM features alone carry weak signal. Next step: add delivery delay and review score.
