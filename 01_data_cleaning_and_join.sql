@@ -1,3 +1,5 @@
+-- Single source-of-truth table: delivered orders joined with customers and payments.
+-- Note: one order can have several payment rows (e.g. credit card + voucher).
 SELECT 
     o.order_id,
     c.customer_unique_id,
