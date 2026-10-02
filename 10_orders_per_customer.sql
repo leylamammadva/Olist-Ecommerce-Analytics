@@ -1,3 +1,5 @@
+-- How many customers ordered once, twice, 3+ times (delivered orders).
+-- Result: 97.00% of customers ordered once, 2.76% twice, 0.24% three or more times.
 WITH customer_orders AS (
     SELECT
         c.customer_unique_id,
