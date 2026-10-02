@@ -1,7 +1,8 @@
 # E-Commerce Customer Segmentation & Retention Analysis (Olist)
 
-**[Interactive dashboard](https://leylamammadva.github.io/Olist-Ecommerce-Analytics/)** 
-Power BI file: `05_RFM_Dashboard.pbix`
+![RFM Dashboard](RFM_Dashboard_Preview.png)
+
+**[Interactive dashboard](https://leylamammadva.github.io/Olist-Ecommerce-Analytics/)** | Power BI file: `05_RFM_Dashboard.pbix`
 
 End-to-end analytics project on the Olist Brazilian E-Commerce dataset (Kaggle): SQL data preparation, RFM and K-Means customer segmentation, cohort retention, repurchase prediction, and a Power BI dashboard.
 
