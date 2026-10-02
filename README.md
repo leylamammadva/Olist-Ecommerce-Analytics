@@ -39,12 +39,22 @@ This project is an end-to-end data analytics solution using a real-world e-comme
 * **Solution:** `05_RFM_Dashboard.pbix` (Interactive file) and `RFM_Dashboard_Preview.png` (Visual preview)
 
 Task 6: Advanced ML & Retention Analysis (Python)
+
 - K-Means clustering and cohort retention heatmap: 06_advanced_ml_and_churn.ipynb
 - Repurchase prediction with time-based split (no data leakage): 07_churn_prediction_time_based.ipynb
 
 Key findings:
-- Only 0.7% of customers (386 of 55,524) placed another order within 90 days,
-  so repeat purchase on Olist is extremely rare.
+- High-value one-timers are 30% of customers but generate 57.5% of revenue.
+  Only 3% of customers buy more than once.
+- Less than 1% of customers order again in the month after their first purchase
+  (cohort retention heatmap).
+- Only 0.7% of customers (386 of 55,524) placed another order within 90 days.
 - Logistic Regression (ROC-AUC 0.61, PR-AUC 0.05, about 7x the random baseline of 0.007)
-  outperformed Random Forest at ranking likely repurchasers (PR-AUC 0.011).
+  outperformed Random Forest (PR-AUC 0.011) at ranking likely repurchasers.
 - RFM features alone carry weak signal. Next step: add delivery delay and review score.
+
+## Data & how to reproduce
+Dataset: Olist Brazilian E-Commerce (Kaggle). Run the SQL in 01_data_cleaning_and_join.sql,
+export the result as rfm_data.csv, then run the notebooks in order (04, 06, 07).
+
+![RFM Dashboard](RFM_Dashboard_Preview.png)
