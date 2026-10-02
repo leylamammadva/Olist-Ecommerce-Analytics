@@ -51,7 +51,9 @@ Key findings:
 - Only 0.7% of customers (386 of 55,524) placed another order within 90 days.
 - Logistic Regression (ROC-AUC 0.61, PR-AUC 0.05, about 7x the random baseline of 0.007)
   outperformed Random Forest (PR-AUC 0.011) at ranking likely repurchasers.
-- RFM features alone carry weak signal. Next step: add delivery delay and review score.
+- Adding delivery delay, review score and freight ratio did not improve prediction
+  (ROC-AUC 0.605 vs 0.602, 5-fold CV; notebook 08). Repeat purchase on Olist is
+  not explained by delivery experience.
 
 ## Data & how to reproduce
 Dataset: Olist Brazilian E-Commerce (Kaggle). Run the SQL in 01_data_cleaning_and_join.sql,
