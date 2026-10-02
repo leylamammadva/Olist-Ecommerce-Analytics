@@ -7,9 +7,9 @@ End-to-end analytics project on the Olist Brazilian E-Commerce dataset (Kaggle):
 ## Key findings
 
 - **Revenue is concentrated in one-time buyers.** High-value one-timers are 29.8% of customers but generate 57.5% of revenue.
-- **Repeat purchase is extremely rare.** Only about 3% of customers ordered more than once, and less than 1% order again in the month after their first purchase.
+- **Repeat purchase is extremely rare.** 97.00% of customers ordered once, 2.76% twice and 0.24% three or more times (SQL). Less than 1% order again in the month after their first purchase (cohort analysis).
 - **Delivery experience does not explain it.** Adding delivery delay, review score and freight ratio to a repurchase model did not improve prediction (ROC-AUC 0.605 vs 0.602, 5-fold CV).
-- **Business implication:** the biggest growth opportunity is converting high-value one-time buyers into repeat buyers, not acquiring new customers.
+- **Business implication:** the biggest growth opportunity is converting high-value one-time buyers into repeat buyers, not only acquiring new customers.
 
 ## Repository contents
 
@@ -23,20 +23,24 @@ End-to-end analytics project on the Olist Brazilian E-Commerce dataset (Kaggle):
 | `06_advanced_ml_and_churn.ipynb` | K-Means clustering and cohort retention heatmap |
 | `07_churn_prediction_time_based.ipynb` | Baseline repurchase model (RFM features, time-based split) |
 | `08_churn_delivery_and_reviews.ipynb` | Adds delivery and review features, 5-fold cross-validation |
+| `09_monthly_revenue_growth.sql` | Monthly revenue and month-over-month growth (CTE + LAG), 2017 onward |
+| `10_orders_per_customer.sql` | Customers by number of orders (CTE + window function) |
 
 ## Analysis
 
-### 1. Data preparation (SQL, files 01-03)
-- **Source of truth table:** delivered orders joined with customers and payments, keeping payments > 0.
-- **Top 10 cities by revenue:** input for marketing budget allocation.
-- **Payment types:** number of orders and revenue per payment method, input for commission negotiations. An order paid with several methods is counted once per method.
+### 1. SQL (files 01-03, 09-10)
+- **Source of truth table (01):** delivered orders joined with customers and payments, keeping payments > 0.
+- **Top 10 cities by revenue (02):** input for marketing budget allocation.
+- **Payment types (03):** number of orders and revenue per payment method, input for commission negotiations. An order paid with several methods is counted once per method.
+- **Monthly revenue (09):** revenue grew from 127K (Jan 2017) to 1.15M (Nov 2017) and has stayed around 1.0-1.13M per month since Jan 2018. 2016 is excluded because the platform had only a few orders then.
+- **Orders per customer (10):** 97.00% of customers ordered once, 2.76% twice, 0.24% three or more times. This matches the repeat-purchase finding from the Python notebooks.
 
 ### 2. RFM segmentation (04)
-Recency, Frequency and Monetary values per customer (93,357 customers), scored and grouped into six segments (Champions, Loyal, New / Promising, At Risk (High Value), Lost / Low Value, Regular / Average).
+Recency, Frequency and Monetary values per customer (about 93,000 customers), scored and grouped into six segments (Champions, Loyal, New / Promising, At Risk (High Value), Lost / Low Value, Regular / Average).
 About 97% of customers placed one order, so Frequency is scored in three groups (1, 2, 3+ orders) and segments are defined by Recency and Monetary scores.
 
 ### 3. Dashboard (05)
-KPI cards (93,357 customers, 15.42M total revenue, 165.20 average revenue per customer), a segment slicer, customer distribution (donut) and revenue by segment (column chart). At Risk (High Value) is the second-largest revenue segment, a natural target for win-back offers.
+KPI cards (total customers, 15.42M total revenue, 165.20 average revenue per customer), a segment slicer, customer distribution (donut) and revenue by segment (column chart). At Risk (High Value) is the second-largest revenue segment, a natural target for win-back offers.
 
 ### 4. K-Means clusters and cohorts (06)
 Features: Recency, log(Frequency), log(Monetary), standardized. k = 4 chosen with the elbow method and silhouette score.
@@ -67,17 +71,19 @@ PR-AUC is about 4x the random baseline (0.007), so there is a weak signal, but d
 - Segment names (for example "Loyal Customers") are based on Recency and Monetary, and most customers in them bought once.
 - Segment sizes are similar by construction (R and M scores are quintiles).
 - The dashboard uses RFM segments, not the K-Means clusters.
+- Customer counts differ slightly between notebooks and SQL (for example 93,357 vs 93,358) because of different input preparation.
 
 ## How to reproduce
 
-1. Download the Olist Brazilian E-Commerce dataset from Kaggle and load the CSVs into a SQL database.
+1. Download the Olist Brazilian E-Commerce dataset from Kaggle and load the CSVs into a SQL database (SQLite was used).
 2. Run `01_data_cleaning_and_join.sql` and export the result as `rfm_data.csv`.
-3. Run `04` (creates `final_customer_segments.csv`), then `06` and `07`.
+3. Run notebooks `04` (creates `final_customer_segments.csv`), then `06` and `07`.
 4. Notebook `08` reads the raw Olist CSVs (`orders`, `order_items`, `order_reviews`, `customers`).
-5. Install dependencies: `pip install -r requirements.txt`.
+5. SQL files `09` and `10` use SQLite syntax (`strftime`) and run on the `orders`, `customers` and `order_payments` tables.
+6. Install dependencies: `pip install -r requirements.txt`.
 
 The data files are not included in this repository.
 
 ## Tech stack
 
-SQL, Python (pandas, NumPy, scikit-learn, matplotlib, seaborn), Power BI.
+SQL (SQLite), Python (pandas, NumPy, scikit-learn, matplotlib, seaborn), Power BI.
